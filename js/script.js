@@ -1,7 +1,8 @@
 const app = new Vue({
     el: '#root',
     data: {
-        activeindex: 0,
+        timers: null,
+        activeIndex: 0,
         arrSlides: [{
                 title: 'Svezia',
                 img: '01.jpg',
@@ -26,24 +27,34 @@ const app = new Vue({
                 title: 'Paradise',
                 img: '05.jpg',
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-            },
-        ],
-    }
+            }
+        ]
+    },
 
     methods: {
-        nextius() {
-            if (this.activeindex == this.arrSlides.lengthen.length - 1) {
-                this.activeindex = 0;
+        nextius(){
+            if (this.activeIndex == this.arrSlides.length - 1) {
+                this.activeIndex = 0;
             } else {
-                this.activeindex++;
+                this.activeIndex++;
             }
         },
-        previus() {
-            if (this.activeindex == 0) {
-                this.activeindex = this.arrSlides - 1;
+        previus(){
+            if (this.activeIndex == 0) {
+                this.activeIndex = this.arrSlides.length - 1;
             } else {
-                this.activeindex--;
+                this.activeIndex--;
             }
+        },
+        startAnimation(){
+            this.timers = setInterval(this.nextius, 4000);
+        },
+        stopAnimation(){
+            clearInterval(this.timers);
         }
+    },
+    created(){
+        this.startAnimation();
     }
+
 });
