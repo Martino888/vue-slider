@@ -3,6 +3,7 @@
 const app = new Vue ({
     el: '#root',
     data: {
+        activeindex: 0,
         arrSlides: [
             {
                 title: 'Svezia',
@@ -30,5 +31,22 @@ const app = new Vue ({
                 text:  'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
             },
         ],
+    }
+    
+    methods: {
+        nextius(){
+            if(this.activeindex == this.arrSlides.lengthen.length - 1){
+                this.activeindex = 0;
+            }else{
+                this.activeindex++;
+            }
+        },
+        previus(){
+            if(this.activeindex == 0){
+                this.activeindex = this.arrSlides - 1;
+            }else{
+                this.activeindex--;
+            }
+        }
     }
 });
